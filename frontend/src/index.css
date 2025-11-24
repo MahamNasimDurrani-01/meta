@@ -1,0 +1,65 @@
+@import "tailwindcss";
+@import './MobileCritical.css';
+
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap'); */
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Override body to use Roboto */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #1a202d;
+  color: #ffffff;
+}
+
+
+/* nav underline growing line */
+.nav-link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #0372fa; /* light blue-200 */
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px; /* adjust distance from text */
+  width: 0;
+  height: 2px;
+  background-color: #0372fa; /* same hover color */
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+.heading {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-\[fadeIn_0\.3s_ease-out\] {
+  animation: fadeIn 0.3s ease-out;
+}
+
+
+
+
+
+
+
+
+
