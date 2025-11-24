@@ -1,31 +1,38 @@
 import express from "express";
 import cors from "cors";
 import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+
+dotenv.config(); // Load environment variables
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// HOSTINGER SMTP SETTINGS
+// Nodemailer transporter
 const transporter = nodemailer.createTransport({
     host: "smtp.hostinger.com",
     port: 465,
     secure: true,
     auth: {
-        user: "info@metameshlabs.com",
-        pass: "MetaMesh@Lab01"
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 });
 
-// API ROUTE
+// API route to handle contact form
 app.post("/send-query", async (req, res) => {
     const { name, email, message } = req.body;
 
+    if (!name || !email || !message) {
+        return res.status(400).json({ success: false, error: "All fields are required" });
+    }
+
     try {
-        // Email to Website Owner
+        // Email to website owner
         await transporter.sendMail({
-            from: `"MetaMesh Labs" <info@metameshlabs.com>`,
-            to: "info@metameshlabs.com",
+            from: `"MetaMesh Labs" <${process.env.EMAIL_USER}>`,
+            to: process.env.EMAIL_USER,
             subject: "New Query from Website",
             html: `
                 <h2>New Query Received</h2>
@@ -35,9 +42,9 @@ app.post("/send-query", async (req, res) => {
             `
         });
 
-        // Confirmation to User
+        // Confirmation email to user
         await transporter.sendMail({
-            from: `"MetaMesh Labs" <info@metameshlabs.com>`,
+            from: `"MetaMesh Labs" <${process.env.EMAIL_USER}>`,
             to: email,
             subject: "We Received Your Query",
             html: `
@@ -49,9 +56,11 @@ app.post("/send-query", async (req, res) => {
 
         res.json({ success: true });
     } catch (error) {
-        console.log(error);
-        res.json({ success: false, error });
+        console.error("Email sending error:", error);
+        res.status(500).json({ success: false, error: "Failed to send email" });
     }
 });
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
