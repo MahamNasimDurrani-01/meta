@@ -35,17 +35,13 @@ function WhyChooseUs() {
           className="w-full lg:w-1/2"
         >
           <h2 className="text-2xl md:text-3xl font-bold mb-6">
-            Who{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+            Vision{" "}
+            {/* <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
               We Are
-            </span>
+            </span> */}
           </h2>
           <p className="text-gray-300 mb-8 leading-relaxed text-lg">
-            At <span className="text-blue-400 font-semibold">Metamesh Labs</span>, we empower businesses and individuals
-            to stay ahead in the ever-changing digital economy. From Artificial Intelligence to Blockchain, we
-            provide consulting, training, and hands-on support to help you embrace the technologies shaping the future. We
-            are not just advisors — we're your partners in transformation, ensuring smooth adoption of AI, automation, and
-            digital tools that unlock growth and efficiency.
+          <span className="text-blue-400 font-semibold">Metamesh Labs</span>, vision of blockchain and AI automation is to create intelligent, self-managing digital ecosystems that operate with unprecedented levels of trust, transparency, and efficiency. By combining AI's analytical power and automation capabilities with blockchain's secure, immutable ledger, this convergence aims to transform various industries by removing friction, enhancing security, and enabling new forms of decentralized, autonomous collaboration.
           </p>
 
           {/* Benefits Checklist */}

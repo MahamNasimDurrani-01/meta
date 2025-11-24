@@ -10,7 +10,7 @@ const Testimonials = () => {
     },
     {
       id: 2,
-      text: "Our crypto awareness workshops gave our team the confidence to explore blockchain in business safely and effectively.",
+      text: "The AI Automation & blockchain workshops gave our team the confidence to explore blockchain and AI integration in business safely and effectively",
       author: "Financial Services Director",
     },
     {
